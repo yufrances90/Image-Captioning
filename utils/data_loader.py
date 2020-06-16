@@ -2,13 +2,15 @@ import nltk
 import os
 import torch
 import torch.utils.data as data
-from vocabulary import Vocabulary
-from PIL import Image
-from pycocotools.coco import COCO
 import numpy as np
-from tqdm import tqdm
 import random
 import json
+
+from PIL import Image
+from pycocotools.coco import COCO
+from tqdm.notebook import tqdm
+
+from utils.vocabulary import Vocabulary
 
 def get_loader(transform,
                mode='train',
@@ -20,7 +22,7 @@ def get_loader(transform,
                unk_word="<unk>",
                vocab_from_file=True,
                num_workers=0,
-               cocoapi_loc='/opt'):
+               cocoapi_loc=''):
     """Returns the data loader.
     Args:
       transform: Image transform.
